@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/materialize-css/dist/css/materialize.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "video-manager"
+    }
+  },
+  "defaultProject": "video-manager",
+  "cli": {
+    "analytics": false
+  }
 }
