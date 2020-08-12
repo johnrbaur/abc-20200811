@@ -2,5 +2,5 @@
   *ngFor="let video of videoList"
   [video]="video"
   [selected]="video.id === selectedVideoId"
-  (click)="selectVideo(video)"
+  (click)="videoSelected.emit(video)"
 ></jb-video-card>

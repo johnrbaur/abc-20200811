@@ -1,5 +1,6 @@
 <jb-video-list
   [videoList]="videos"
+  [selectedVideoId]="selectedVideo?.id"
   (videoSelected)="setSelectedVideo($event)"
 ></jb-video-list>
 <jb-video-player [video]="selectedVideo"></jb-video-player>

@@ -10,14 +10,9 @@ import { Video } from '../../app-types';
 export class VideoListComponent implements OnInit {
   @Output() videoSelected = new EventEmitter<Video>();
   @Input() videoList: Video[] = [];
-  selectedVideoId?: string;
+  @Input() selectedVideoId?: string;
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  selectVideo(video: Video): void {
-    this.selectedVideoId = video.id;
-    this.videoSelected.emit(video);
-  }
 }
