@@ -5,13 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { VideoListComponent } from './video-list/video-list.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { StatFiltersComponent } from './stat-filters/stat-filters.component';
+import { VideoCardComponent } from './video-card/video-card.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: VideoDashboardComponent }
 ];
 
 @NgModule({
-  declarations: [VideoDashboardComponent, VideoListComponent, VideoPlayerComponent, StatFiltersComponent],
+  declarations: [VideoDashboardComponent, VideoListComponent, VideoPlayerComponent, StatFiltersComponent, VideoCardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes)
