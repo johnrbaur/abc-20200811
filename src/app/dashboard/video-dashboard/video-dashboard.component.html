@@ -1,3 +1,6 @@
-<jb-video-list [videoList]="videos"></jb-video-list>
-<jb-video-player></jb-video-player>
+<jb-video-list
+  [videoList]="videos"
+  (videoSelected)="setSelectedVideo($event)"
+></jb-video-list>
+<jb-video-player [video]="selectedVideo"></jb-video-player>
 <jb-stat-filters></jb-stat-filters>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Video } from '../../app-types';
 
@@ -8,6 +8,7 @@ import { Video } from '../../app-types';
   styleUrls: ['./video-list.component.css'],
 })
 export class VideoListComponent implements OnInit {
+  @Output() videoSelected = new EventEmitter<Video>();
   @Input() videoList: Video[] = [];
   selectedVideoId?: string;
 
@@ -15,7 +16,8 @@ export class VideoListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectVideo(id: string): void {
-    this.selectedVideoId = id;
+  selectVideo(video: Video): void {
+    this.selectedVideoId = video.id;
+    this.videoSelected.emit(video);
   }
 }
