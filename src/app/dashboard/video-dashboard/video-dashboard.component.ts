@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { Video, mockVideoList } from '../../app-types';
+import { Video } from '../../app-types';
 
 @Component({
   selector: 'jb-video-dashboard',
@@ -8,10 +9,14 @@ import { Video, mockVideoList } from '../../app-types';
   styleUrls: ['./video-dashboard.component.css']
 })
 export class VideoDashboardComponent implements OnInit {
-  videos: Video[] = mockVideoList;
+  videos: Video[] = [];
   selectedVideo?: Video;
 
-  constructor() { }
+  constructor(http: HttpClient) {
+    http
+      .get<Video[]>('https://api.angularbootcamp.com/videos')
+      .subscribe(videoList => this.videos = videoList);
+  }
 
   ngOnInit(): void {
   }
