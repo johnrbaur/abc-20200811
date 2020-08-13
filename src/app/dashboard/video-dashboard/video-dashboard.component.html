@@ -1,5 +1,5 @@
 <jb-video-list
-  [videoList]="videos"
+  [videoList]="(videos | async) || []"
   [selectedVideoId]="selectedVideo?.id"
   (videoSelected)="setSelectedVideo($event)"
 ></jb-video-list>
