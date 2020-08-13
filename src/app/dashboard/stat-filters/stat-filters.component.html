@@ -1,1 +1,24 @@
-<p>stat-filters works!</p>
+<div class="card">
+  <div class="card-content">
+    <div class="card-title">Search</div>
+
+    <form [formGroup]="filters" (ngSubmit)="submit()">
+      <label for="title">Video Title</label>
+      <input id="title" type="text" formControlName="title" />
+
+      <label for="author">Video Author</label>
+      <input id="author" type="text" formControlName="author" />
+
+      <button
+        class="btn"
+        type="submit"
+        [class.disabled]="filters.invalid"
+        [disabled]="filters.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<pre>{{ filters.value | json }}</pre>

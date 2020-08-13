@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { VideoDashboardComponent } from './video-dashboard/video-dashboard.component';
 import { Routes, RouterModule } from '@angular/router';
 import { VideoListComponent } from './video-list/video-list.component';
@@ -15,7 +16,8 @@ const dashboardRoutes: Routes = [
   declarations: [VideoDashboardComponent, VideoListComponent, VideoPlayerComponent, StatFiltersComponent, VideoCardComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(dashboardRoutes)
+    RouterModule.forChild(dashboardRoutes),
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
