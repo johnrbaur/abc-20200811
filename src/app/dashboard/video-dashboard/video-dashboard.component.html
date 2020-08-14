@@ -1,7 +1,6 @@
 <jb-video-list
   [videoList]="(videos | async) || []"
-  [selectedVideoId]="selectedVideo?.id"
-  (videoSelected)="setSelectedVideo($event)"
+  [selectedVideoId]="videoId | async"
 ></jb-video-list>
 <jb-video-player [video]="selectedVideo"></jb-video-player>
 <jb-stat-filters></jb-stat-filters>

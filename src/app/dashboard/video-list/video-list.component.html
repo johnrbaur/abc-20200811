@@ -2,5 +2,6 @@
   *ngFor="let video of videoList"
   [video]="video"
   [selected]="video.id === selectedVideoId"
-  (click)="videoSelected.emit(video)"
+  routerLink=""
+  [queryParams]="{ id: video.id }"
 ></jb-video-card>

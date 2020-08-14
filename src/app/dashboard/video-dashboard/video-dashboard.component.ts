@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Video } from '../../app-types';
 import { VideoLoaderService } from '../../video-loader.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'jb-video-dashboard',
@@ -12,9 +14,14 @@ import { Observable } from 'rxjs';
 export class VideoDashboardComponent implements OnInit {
   videos: Observable<Video[]>;
   selectedVideo?: Video;
+  videoId: Observable<string | null>;
 
-  constructor(vls: VideoLoaderService) {
+  constructor(vls: VideoLoaderService, route: ActivatedRoute) {
     this.videos = vls.loadVideos();
+
+    this.videoId = route.queryParamMap.pipe(
+      map(params => params.get('id'))
+    );
   }
 
   ngOnInit(): void {
