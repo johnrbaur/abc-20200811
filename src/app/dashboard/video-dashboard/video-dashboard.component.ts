@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Video } from '../../app-types';
 import { VideoLoaderService } from '../../video-loader.service';
@@ -13,7 +13,7 @@ import { VideoLoaderService } from '../../video-loader.service';
 })
 export class VideoDashboardComponent implements OnInit {
   videos: Observable<Video[]>;
-  selectedVideo?: Video;
+  selectedVideo: Observable<Video | undefined>;
   videoId: Observable<string | null>;
 
   constructor(vls: VideoLoaderService, route: ActivatedRoute) {
@@ -22,13 +22,12 @@ export class VideoDashboardComponent implements OnInit {
     this.videoId = route.queryParamMap.pipe(
       map(params => params.get('id'))
     );
+
+    this.selectedVideo = this.videoId.pipe(
+      switchMap(id => id ? vls.loadVideoById(id) : of(undefined))
+    );
   }
 
   ngOnInit(): void {
   }
-
-  setSelectedVideo(video: Video): void {
-    this.selectedVideo = video;
-  }
-
 }

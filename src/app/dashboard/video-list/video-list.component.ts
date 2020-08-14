@@ -9,7 +9,7 @@ import { Video } from '../../app-types';
 })
 export class VideoListComponent implements OnInit {
   @Input() videoList: Video[] = [];
-  @Input() selectedVideoId?: string;
+  @Input() selectedVideoId: string | undefined | null;
 
   constructor() {}
 

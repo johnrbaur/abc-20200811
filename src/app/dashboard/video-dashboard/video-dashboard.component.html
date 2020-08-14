@@ -2,5 +2,5 @@
   [videoList]="(videos | async) || []"
   [selectedVideoId]="videoId | async"
 ></jb-video-list>
-<jb-video-player [video]="selectedVideo"></jb-video-player>
+<jb-video-player [video]="selectedVideo | async"></jb-video-player>
 <jb-stat-filters></jb-stat-filters>
